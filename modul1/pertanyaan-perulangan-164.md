@@ -1,35 +1,4 @@
-# README – Percobaan 2A: Perulangan (for)
-
-## Kode Program Dasar (dari Modul)
-
-```cpp
-int timer = 100; // delay antar LED; semakin besar = semakin lambat
-
-void setup() {
-  // Inisialisasi pin 2–7 sebagai OUTPUT menggunakan for
-  for (int ledPin = 2; ledPin < 8; ledPin++) {
-    pinMode(ledPin, OUTPUT);
-  }
-}
-
-void loop() {
-  // Perulangan kiri → kanan (pin 2 sampai 7)
-  for (int ledPin = 2; ledPin < 8; ledPin++) {
-    digitalWrite(ledPin, HIGH); // nyalakan LED
-    delay(timer);
-    digitalWrite(ledPin, LOW);  // matikan LED
-  }
-
-  // Perulangan kanan → kiri (pin 7 sampai 2)
-  for (int ledPin = 7; ledPin >= 2; ledPin--) {
-    digitalWrite(ledPin, HIGH); // nyalakan LED
-    delay(timer);
-    digitalWrite(ledPin, LOW);  // matikan LED
-  }
-}
-```
-
----
+# Percobaan 2A: Perulangan (for)
 
 ## Jawaban Pertanyaan Praktikum 1.6.4
 
