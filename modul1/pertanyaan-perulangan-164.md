@@ -4,29 +4,12 @@
 
 ### 1. Gambar Skematik Rangkaian 6 LED Running
 
-```
-Arduino Uno
-                     220Ω
-Pin 2  ──────────┤├────── Anoda LED1 ── Katoda ──┐
-                     220Ω                         │
-Pin 3  ──────────┤├────── Anoda LED2 ── Katoda ──┤
-                     220Ω                         │
-Pin 4  ──────────┤├────── Anoda LED3 ── Katoda ──┤
-                     220Ω                         │
-Pin 5  ──────────┤├────── Anoda LED4 ── Katoda ──┤
-                     220Ω                         │
-Pin 6  ──────────┤├────── Anoda LED5 ── Katoda ──┤
-                     220Ω                         │
-Pin 7  ──────────┤├────── Anoda LED6 ── Katoda ──┤
-                                                  │
-GND    ───────────────────────────────────────────┘
-```
+![schematic](schematic.png)
 
 **Keterangan:**
-- Setiap LED dihubungkan seri dengan resistor 220Ω untuk membatasi arus.
-- Anoda (+) LED terhubung ke pin Arduino melalui resistor.
+- Anoda (+) LED terhubung ke pin Arduino.
 - Katoda (−) semua LED terhubung ke GND bersama (common ground).
-- LED 1 s.d. LED 6 berurutan di pin 2, 3, 4, 5, 6, 7.
+- LED 1 s.d. LED 5 berurutan di pin 2, 3, 4, 5, 6.
 
 ---
 
