@@ -1,35 +1,4 @@
-# README – Percobaan 1A: Percabangan (if / if-else)
-
-## Kode Program Dasar (dari Modul)
-
-```cpp
-const int ledPin = 6;   // LED terhubung ke pin digital 6
-int timeDelay = 1000;   // delay awal 1000 ms (1 detik)
-
-void setup() {
-  pinMode(ledPin, OUTPUT); // atur pin 6 sebagai OUTPUT
-}
-
-void loop() {
-  // Nyalakan LED
-  digitalWrite(ledPin, HIGH);
-  delay(timeDelay);
-
-  // Matikan LED
-  digitalWrite(ledPin, LOW);
-  delay(timeDelay);
-
-  // Evaluasi kondisi setelah 1 siklus kedip selesai
-  if (timeDelay <= 100) {
-    delay(3000);       // jeda 3 detik sebelum reset
-    timeDelay = 1000;  // kembalikan delay ke nilai awal
-  } else {
-    timeDelay -= 100;  // kurangi delay 100 ms (LED makin cepat)
-  }
-}
-```
-
----
+# Percobaan 1A: Percabangan (if / if-else)
 
 ## Jawaban Pertanyaan Praktikum 1.5.4
 
