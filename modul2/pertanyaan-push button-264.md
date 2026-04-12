@@ -6,29 +6,7 @@
 
 ### 1. Schematic Rangkaian
 
-```
-Arduino Uno                 Seven Segment (Common Anode)
-
-Pin 7  (a) ---[220R]------- a
-Pin 6  (b) ---[220R]------- b
-Pin 5  (c) ---[220R]------- c
-Pin 11 (d) ---[220R]------- d
-Pin 10 (e) ---[220R]------- e
-Pin 8  (f) ---[220R]------- f
-Pin 9  (g) ---[220R]------- g
-Pin 4  (dp)---[220R]------- dp
-
-5V  ----------------------------COM (pin common anode)
-
-Arduino Uno                 Push Button
-
-Pin 3  -------------------------[Kaki 1 Push Button]
-                                [Kaki 2 Push Button]------- GND
-
-(Internal pull-up diaktifkan via INPUT_PULLUP, tidak perlu resistor eksternal)
-
-GND ---- GND Arduino
-```
+![schematic-264](schematic-264.png)
 
 Keterangan:
 - Seven segment dihubungkan sama seperti pada percobaan 2A.
