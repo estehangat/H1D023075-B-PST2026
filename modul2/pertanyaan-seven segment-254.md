@@ -6,7 +6,7 @@
 
 ### 1. Schematic Rangkaian
 
-![schematic-254](schematic-254.png)
+![schematic-254-seven](schematic-254-seven.png)
 
 Keterangan:
 - Setiap segmen dihubungkan melalui resistor 220 Ohm untuk membatasi arus.
