@@ -6,21 +6,7 @@
 
 ### 1. Schematic Rangkaian
 
-```
-Arduino Uno                 Seven Segment (Common Anode)
-                            
-Pin 7  (a) ---[220R]------- a
-Pin 6  (b) ---[220R]------- b
-Pin 5  (c) ---[220R]------- c
-Pin 11 (d) ---[220R]------- d
-Pin 10 (e) ---[220R]------- e
-Pin 8  (f) ---[220R]------- f
-Pin 9  (g) ---[220R]------- g
-Pin 4  (dp)---[220R]------- dp
-
-5V  ----------------------------COM (pin common anode)
-GND ---- GND Arduino
-```
+![schematic-254](schematic-254.png)
 
 Keterangan:
 - Setiap segmen dihubungkan melalui resistor 220 Ohm untuk membatasi arus.
@@ -97,16 +83,9 @@ Berikut adalah modifikasi program agar counter berjalan mundur dari F (15) ke 0,
 
 ```cpp
 #include <Arduino.h>
-// Menyertakan library Arduino agar fungsi-fungsi seperti pinMode,
-// digitalWrite, dan delay dapat digunakan.
 
-// Mendefinisikan pin Arduino yang terhubung ke setiap segmen seven segment.
-// Urutan: a, b, c, d, e, f, g, dp
 const int segmentPins[8] = {7, 6, 5, 11, 10, 8, 9, 4};
 
-// Pola bit untuk setiap karakter hex 0-F.
-// Setiap baris mewakili satu karakter, dengan urutan kolom: a b c d e f g dp
-// Nilai 1 = segmen aktif (menyala), 0 = segmen tidak aktif (mati).
 byte digitPattern[16][8] = {
   {1,1,1,1,1,1,0,0},  // 0: segmen a,b,c,d,e,f menyala
   {0,1,1,0,0,0,0,0},  // 1: segmen b,c menyala
@@ -126,37 +105,23 @@ byte digitPattern[16][8] = {
   {1,0,0,0,1,1,1,0}   // F: segmen a,e,f,g menyala
 };
 
-// Fungsi untuk menampilkan satu karakter pada seven segment.
-// Parameter num adalah indeks karakter (0-15) yang ingin ditampilkan.
 void displayDigit(int num){
   for(int i=0; i<8; i++){
-    // Operator ! membalik nilai karena seven segment menggunakan Common Anode:
-    // - Nilai 1 (menyala) di array -> dikirim LOW ke pin -> segmen menyala
-    // - Nilai 0 (mati) di array   -> dikirim HIGH ke pin -> segmen mati
     digitalWrite(segmentPins[i], !digitPattern[num][i]);
   }
 }
 
-// Fungsi setup dijalankan sekali saat Arduino pertama dinyalakan.
 void setup() {
-  // Mengatur semua pin segmen sebagai OUTPUT agar dapat mengirim sinyal digital.
   for(int i=0; i<8; i++){
     pinMode(segmentPins[i], OUTPUT);
   }
 }
 
-// Fungsi loop dijalankan berulang terus-menerus selama Arduino menyala.
 void loop() {
-  // Loop dari 15 (F) turun sampai 0, kemudian mengulang kembali dari F.
   for(int i=15; i>=0; i--){
-    // Tampilkan digit sesuai nilai i saat ini.
     displayDigit(i);
-
-    // Tahan tampilan selama 1000 milidetik (1 detik) sebelum berpindah ke digit berikutnya.
     delay(1000);
   }
-  // Setelah mencapai 0, loop utama akan memanggil loop() lagi,
-  // sehingga hitungan mundur dimulai ulang dari F secara otomatis.
 }
 ```
 
