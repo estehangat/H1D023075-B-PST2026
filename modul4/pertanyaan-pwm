@@ -1,0 +1,42 @@
+# Jawaban Pertanyaan PWM
+
+## 1. Jelaskan mengapa LED dapat diatur kecerahannya menggunakan fungsi analogWrite()!
+Fungsi `analogWrite()` menggunakan teknik PWM (Pulse Width Modulation), yaitu mengatur lebar pulsa sinyal digital. Semakin lama sinyal HIGH, semakin terang LED.
+
+## 2. Apa hubungan antara nilai ADC (0–1023) dan nilai PWM (0–255)?
+ADC memiliki rentang 0–1023 (10-bit), sedangkan PWM 0–255 (8-bit). Hubungannya:
+PWM ≈ ADC / 4
+
+Biasanya digunakan fungsi `map()` agar hasil lebih presisi.
+
+## 3. Modifikasilah program berikut agar LED hanya menyala pada rentang kecerahan sedang, yaitu hanya ketika nilai PWM berada pada rentang 50 sampai 200. Jelaskan program pada file README.md.
+
+```cpp
+int potPin = A0;
+int ledPin = 9;
+int nilaiADC;
+int nilaiPWM;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  nilaiADC = analogRead(potPin);
+  nilaiPWM = map(nilaiADC, 0, 1023, 0, 255);
+
+  if (nilaiPWM >= 50 && nilaiPWM <= 200) {
+    analogWrite(ledPin, nilaiPWM);
+  } else {
+    analogWrite(ledPin, 0);
+  }
+
+  delay(10);
+}
+```
+
+## Penjelasan
+- `analogRead()` membaca nilai potensiometer
+- `map()` mengubah ke rentang PWM
+- `if` membatasi kecerahan LED
+- `analogWrite()` mengatur intensitas LED
