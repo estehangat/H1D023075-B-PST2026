@@ -1,29 +1,25 @@
-int timer = 100;           
-// delay. Semakin tinggi angkanya, semakin lambat waktunya. 
-void setup() { 
-  // gunakan loop for untuk menginisialisasi setiap pin sebagai 
-  output: 
-  for (int ledPin = 11; ledPin < 14; ledPin++) { 
-  pinMode(ledPin, OUTPUT); 
-  } 
-} 
-
-void loop() { 
-    // looping dari pin rendah ke tinggi 
-    for (int ledPin = 11; ledPin < 14; ledPin++) { 
-    // hidupkan LED pin nya: 
-    digitalWrite(ledPin, HIGH); 
-    delay(timer); 
-    // matikan pin LED nya: 
-    digitalWrite(ledPin, LOW);
-    
-    // looping dari pin yang tinggi ke yang rendah 
-    for (int ledPin = 13; ledPin >= 11; ledPin--) { 
-    // menghidupkan pin: 
-    digitalWrite(ledPin, HIGH); 
-    delay(timer); 
-    // mematikan pin: 
-    digitalWrite(ledPin, LOW); 
-    } 
-  } 
+const int ledPin = 6;
+int timeDelay = 1000;
+void setup()
+{
+  pinMode(ledPin, OUTPUT);
+}
+void loop()
+{
+  // Nyalakan LED
+  digitalWrite(ledPin, HIGH);
+  delay(timeDelay);
+  // Matikan LED
+  digitalWrite(ledPin, LOW);
+  delay(timeDelay);
+  // Baru ubah delay (setelah 1 siklus kedip)
+  if (timeDelay <= 100)
+  {
+    delay(3000);      // jeda sebelum reset
+    timeDelay = 1000; // reset ke awal
+  }
+  else
+  {
+    timeDelay -= 100; // percepatan bertahap
+  }
 }
